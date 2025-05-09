@@ -82,8 +82,23 @@ const login = async (request, response) => {
           expiresIn: "120m",
         }
       );
+      return response.status(200).json({
+        success: true,
+        msg: "Account Successfully created",
+        accessToken,
+      });
+    } else {
+      return response.status(200).json({
+        success: false,
+        msg: "Invalid Password",
+      });
     }
-  } catch (error) {}
+  } catch (error) {
+    return response.status(200).json({
+      success: false,
+      msg: error.message,
+    });
+  }
 };
 
 export { register, login };
