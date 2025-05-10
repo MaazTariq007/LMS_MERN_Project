@@ -44,6 +44,7 @@ const HomePage = () => {
               {courseCategories.map((item) => {
                 return (
                   <Button
+                    key={item.id}
                     className={
                       "bg-gray-800 text-white flex justify-start cursor-pointer "
                     }

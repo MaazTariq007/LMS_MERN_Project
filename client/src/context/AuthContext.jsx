@@ -1,16 +1,22 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export const AuthState = createContext(null);
 
 const AuthContext = ({ children }) => {
+  const navigator = useNavigate();
+
+  const [tabState, setTabState] = useState("login");
+
   // =========================== Register input logic ======================================
 
   const [initialRegisterForm, setInitialRegisterForm] = useState({
     userName: "",
     userEmail: "",
     userPassword: "",
-    role: "",
+    role: "student",
   });
 
   const [registerForm, setRegisterForm] = useState(initialRegisterForm);
@@ -35,10 +41,15 @@ const AuthContext = ({ children }) => {
     try {
       setLoading(true);
       let response = await axios.post(
-        "http://localhost:5000/api/v1/auth/register",
+        "http://localhost:3000/api/v1/lms/register",
         registerForm
       );
-      console.log("account created..");
+      if (response.data.success == "true") {
+        toast(response.data.msg);
+        setTabState("login");
+      } else {
+        toast(response.data.msg);
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -53,10 +64,17 @@ const AuthContext = ({ children }) => {
     try {
       setLoading(true);
       let response = await axios.post(
-        "http://localhost:5000/api/v1/auth/login",
+        "http://localhost:3000/api/v1/lms/login",
         loginForm
       );
-      console.log("successfully login..");
+
+      if (response.data.success == "true") {
+        navigator("/home");
+        toast(response.data.msg);
+      } else {
+        toast(response.data.msg);
+      }
+      console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -64,12 +82,12 @@ const AuthContext = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(registerForm);
-  });
-  useEffect(() => {
-    console.log(loginForm);
-  });
+  // useEffect(() => {
+  //   console.log(registerForm);
+  // });
+  // useEffect(() => {
+  //   console.log(loginForm);
+  // });
 
   return (
     <AuthState.Provider
@@ -82,6 +100,7 @@ const AuthContext = ({ children }) => {
         setLoading,
         handleOnRegisterForm,
         handleOnLoginForm,
+        tabState
       }}
     >
       {children}

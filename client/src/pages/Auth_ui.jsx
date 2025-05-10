@@ -15,16 +15,20 @@ const Auth_ui = () => {
     setLoading,
     handleOnRegisterForm,
     handleOnLoginForm,
+    tabState,
   } = useContext(AuthState);
 
   return (
     <div className="h-screen w-screen grid place-items-center">
-      <Tabs defaultValue="account" className="w-[400px] shadow-2xl p-3 rounded">
+      <Tabs
+        defaultValue={tabState}
+        className="w-[400px] shadow-2xl p-3 rounded"
+      >
         <TabsList className={"w-full"}>
-          <TabsTrigger value="account">Register</TabsTrigger>
-          <TabsTrigger value="password">Login</TabsTrigger>
+          <TabsTrigger value="register">Register</TabsTrigger>
+          <TabsTrigger value="login">Login</TabsTrigger>
         </TabsList>
-        <TabsContent value="account" className={"grid gap-3"}>
+        <TabsContent value="register" className={"grid gap-3"}>
           <form onSubmit={handleOnRegisterForm}>
             <div>
               <Label htmlFor="email" className={"my-1"}>
@@ -79,7 +83,7 @@ const Auth_ui = () => {
             </div>
           </form>
         </TabsContent>
-        <TabsContent value="password" className={"grid gap-3"}>
+        <TabsContent value="login" className={"grid gap-3"}>
           <form onSubmit={handleOnLoginForm}>
             <div>
               <Label htmlFor="email" className={"my-1"}>
