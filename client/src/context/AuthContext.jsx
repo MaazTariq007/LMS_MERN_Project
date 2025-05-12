@@ -69,6 +69,7 @@ const AuthContext = ({ children }) => {
       );
 
       if (response.data.success == "true") {
+        console.log(response);
         navigator("/home");
         toast(response.data.msg);
       } else {
@@ -82,13 +83,6 @@ const AuthContext = ({ children }) => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(registerForm);
-  // });
-  // useEffect(() => {
-  //   console.log(loginForm);
-  // });
-
   return (
     <AuthState.Provider
       value={{
@@ -100,7 +94,8 @@ const AuthContext = ({ children }) => {
         setLoading,
         handleOnRegisterForm,
         handleOnLoginForm,
-        tabState
+        tabState,
+        setTabState,
       }}
     >
       {children}

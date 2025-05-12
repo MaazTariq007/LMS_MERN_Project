@@ -16,11 +16,14 @@ const Auth_ui = () => {
     handleOnRegisterForm,
     handleOnLoginForm,
     tabState,
+    setTabState,
   } = useContext(AuthState);
 
   return (
     <div className="h-screen w-screen grid place-items-center">
       <Tabs
+        value={tabState}
+        onValueChange={setTabState}
         defaultValue={tabState}
         className="w-[400px] shadow-2xl p-3 rounded"
       >
@@ -78,7 +81,7 @@ const Auth_ui = () => {
             </div>
             <div className="grid my-2">
               <Button className={"bg-gray-700 text-white cursor-pointer"}>
-                Register
+                {loading ? "Regsitering..." : "Register"}
               </Button>
             </div>
           </form>

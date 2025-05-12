@@ -84,7 +84,7 @@ const login = async (request, response) => {
       );
       return response.status(200).json({
         success: true,
-        msg: "Account Successfully created",
+        msg: "Account Successfully Login",
         accessToken,
       });
     } else {
