@@ -56,7 +56,7 @@ const InstructorPage = () => {
           </nav>
         </aside>
         <main className="flex-1 py-8 overflow-y-auto">
-          <div className="p-5">
+          <div className="p-5 ">
             <Tabs
               defaultValue={activeTab}
               value={activeTab}

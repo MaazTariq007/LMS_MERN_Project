@@ -35,9 +35,9 @@ export const DashboardUi = () => {
         </Card>
       </div>
       <Card className={"bg-white border-0 mt-5 p-5"}>
+        <p className="text-lg font-semibold">Student List</p>
         <Table className={"p-5"}>
           <TableHeader>
-            <h1 className="text-lg font-semibold">Student List</h1>
             <TableRow>
               <TableHead className="w-[100px]">Invoice</TableHead>
               <TableHead>Status</TableHead>
