@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Laptop } from "lucide-react";
+import { Delete, Edit, Laptop } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -18,14 +18,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
 
 const CoursesUi = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <Card className={"bg-white border-0 mt-5 p-5"}>
         <CardHeader className={"flex justify-between"}>
           <p className="text-lg font-semibold">Student List</p>
           <Button
+          onClick={()=> navigate('/instructor-couse-create') }
             className={
               "bg-gray-800 text-white flex justify-start cursor-pointer "
             }
@@ -44,22 +49,13 @@ const CoursesUi = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">INV001</TableCell>
-              <TableCell>Paid</TableCell>
-              <TableCell>Credit Card</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">INV001</TableCell>
-              <TableCell>Paid</TableCell>
-              <TableCell>Credit Card</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">INV001</TableCell>
-              <TableCell>Paid</TableCell>
-              <TableCell>Credit Card</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
+              <TableCell className="font-medium">MERN STACK</TableCell>
+              <TableCell>Ali Raza</TableCell>
+              <TableCell>$90,000</TableCell>
+              <TableCell className="flex gap-1 justify-end">
+                <Edit className="cursor-pointer" />
+                <Delete className="cursor-pointer" />
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>
