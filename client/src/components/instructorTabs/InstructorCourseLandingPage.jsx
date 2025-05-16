@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { InstructorState } from "@/context/instructor/InstructorContext";
+// import { InstructorState } from "@/context/instructor/InstructorContext";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -16,6 +16,7 @@ import {
   courseLevelOptions,
   languageOptions,
 } from "@/config";
+import { InstructorState } from "@/context/instructor";
 
 export const courseLandingInitialFormData = {
   title: "",
@@ -37,13 +38,10 @@ function InstructorCourseLandingPage() {
   return (
     <>
       <Card>
-        <CardHeader>
-          <CardTitle>Course Landing Page</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form>
+        <CardContent className={""}>
+          <form className={"w-full"}>
             <div className="mb-2">
-              <Label>Course title</Label>
+              <Label>Course titles</Label>
               <Input
                 value={cousreLandingFormData.userName}
                 onChange={(e) =>
@@ -71,10 +69,14 @@ function InstructorCourseLandingPage() {
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Course Category" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className={"bg-white"}>
                   {courseCategories.map((item) => {
                     return (
-                      <SelectItem key={item.id} value={item.id}>
+                      <SelectItem
+                        key={item.id}
+                        value={item.id}
+                        className={"hover:bg-gray-100"}
+                      >
                         {item.label}
                       </SelectItem>
                     );
@@ -97,10 +99,14 @@ function InstructorCourseLandingPage() {
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Course Level" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className={"bg-white"}>
                   {courseLevelOptions.map((item) => {
                     return (
-                      <SelectItem key={item.id} value={item.id}>
+                      <SelectItem
+                        key={item.id}
+                        value={item.id}
+                        className={"hover:bg-gray-100"}
+                      >
                         {item.label}
                       </SelectItem>
                     );
@@ -123,10 +129,14 @@ function InstructorCourseLandingPage() {
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Course Primary Language" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className={"bg-white"}>
                   {languageOptions.map((item) => {
                     return (
-                      <SelectItem key={item.id} value={item.id}>
+                      <SelectItem
+                        key={item.id}
+                        value={item.id}
+                        className={"hover:bg-gray-100"}
+                      >
                         {item.label}
                       </SelectItem>
                     );

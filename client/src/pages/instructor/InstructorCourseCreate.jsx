@@ -9,7 +9,7 @@ const InstructorCourseCreate = () => {
   return (
     <>
       <Card className={"bg-white border-0  w-[90%] mx-auto my-[50px]"}>
-        <Tabs defaultValue="account" className="w-[400px]">
+        <Tabs defaultValue="curriculum">
           <TabsList className={"w-full"}>
             <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
             <TabsTrigger value="CourseLandingPage">
